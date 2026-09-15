@@ -1,0 +1,20 @@
+{
+  "name": "smart-file-sorter",
+  "install": "bash scripts/setup.sh",
+  "terminals": [
+    {
+      "name": "backend",
+      "command": "cd backend && ./.venv/bin/uvicorn smart_file_sorter.api:app --host 0.0.0.0 --port 8000",
+      "description": "FastAPI backend serving the /api endpoints on port 8000."
+    },
+    {
+      "name": "frontend",
+      "command": "cd frontend && npm run dev",
+      "description": "Vite dev server for the React UI on port 5173 (proxies /api to the backend)."
+    }
+  ],
+  "ports": [
+    { "name": "backend", "port": 8000 },
+    { "name": "frontend", "port": 5173 }
+  ]
+}
