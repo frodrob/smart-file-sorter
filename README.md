@@ -52,12 +52,31 @@ backend automatically.
 ### Use the CLI
 
 ```bash
-# Preview (dry run)
+# Preview (dry run) — never moves anything
 smart-sort /path/to/messy/folder
 
-# Actually move files into category subfolders
+# Actually move files (asks for confirmation first)
 smart-sort /path/to/messy/folder --apply
+
+# Include files inside subfolders too
+smart-sort /path/to/messy/folder --recursive --apply
+
+# Skip the confirmation prompt (for scripts)
+smart-sort /path/to/messy/folder --apply --yes
 ```
+
+Flags:
+
+| Flag | Effect |
+| --- | --- |
+| `--apply` | Move files (default is a dry-run preview) |
+| `--dry-run` | Only preview; never move (overrides `--apply`) |
+| `-r`, `--recursive` | Also scan files inside subfolders |
+| `-y`, `--yes` | Skip the confirmation prompt when applying |
+
+With `--recursive`, nested files are flattened into top-level category folders,
+and filename collisions are resolved automatically by appending `" (n)"`.
+Existing category folders are skipped, so repeated runs are idempotent.
 
 ## Tests
 
