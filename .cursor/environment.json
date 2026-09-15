@@ -1,6 +1,7 @@
 {
   "name": "smart-file-sorter",
   "install": "bash scripts/setup.sh",
+  "start": "bash scripts/start.sh",
   "terminals": [
     {
       "name": "backend",
